@@ -14,4 +14,8 @@ The Code does the following:
 - Iteratively and Recursively Prints out pascal triangle
 - Finds the longest prefix in a list of words
 
-STEPS
+INSTRUCTIONS
+- Install go https://go.dev/dl/ 
+- If you're using VS Code, find the Go extensioin by Google and install it
+- Run "Go: Install/Update Tools" in your VS Code command palette (CTRL+SHIFT+P), select all the options and click OK 
+- Open a terminal in your project directory and type go mod init {Your Choice Name}. This will create a go,mod file to track your code's dependencies
