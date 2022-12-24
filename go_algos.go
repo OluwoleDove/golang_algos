@@ -50,7 +50,7 @@ func even_odd(i int, j int) (return_array [][]int) {
 		i = k
 	}
 
-	fmt.Println("ITERATING BETWEEN %s and %s", i, j)
+	fmt.Printf("ITERATING BETWEEN %d and %d", i, j)
 	var odd_num_array []int  //An empty list
 	var even_num_array []int //integer value for even number counts initialized to zero
 
@@ -146,7 +146,7 @@ func multi_table(n int) {
 	fmt.Println(out_str)
 	out_str = "" //After eact complete j iterations, initialize output string again
 	fmt.Println()
-	fmt.Println("\nYou can also have it side by side\n")
+	fmt.Println("You can also have it side by side")
 	fmt.Println("PRINTING 9 BY 12 MULTIPLICATION TABLE SIDE BY SIDE")
 
 	for i := 1; i <= 13; i++ {
@@ -175,9 +175,9 @@ func determine_palindrome(palindrome string) {
 	fmt.Println(truth_array)
 	for i := 0; i < len(truth_array); i++ {
 		if i < len(truth_array) && truth_array[i] == false {
-			fmt.Println("%s is not a palindrome", palindrome)
+			fmt.Printf("%s is not a palindrome", palindrome)
 		} else {
-			fmt.Println("%s is a palindrome", palindrome)
+			fmt.Printf("%s is a palindrome", palindrome)
 		}
 	}
 }
@@ -246,7 +246,7 @@ func pascal_T(n int) string {
 	var val int
 	for j := 0; j <= n; j++ {
 		val = combination(n, j)
-		my_str += string(val) + "     "
+		my_str += strconv.Itoa(val) + "     "
 	}
 	return my_str
 }
@@ -266,7 +266,8 @@ func test_algo() {
 	fmt.Println("Your second integer number: ")
 	fmt.Scanf("%v", k)
 	even_odd_array := even_odd(j, k)
-	fmt.Println("The odd numbers are: \n%s \nThe range contains %s even numbers", even_odd_array[0], even_odd_array[1])
+	fmt.Printf("The odd numbers are: %v", even_odd_array[0])
+	fmt.Printf("The even numbers are: %v", even_odd_array[1])
 	fmt.Println()
 
 	//CALLING func TO PRINT TRIANGLE OF CHARACTERS
@@ -289,7 +290,7 @@ func test_algo() {
 	fmt.Println("THIS PROGRAM COMPARES TWO LISTS TO CHECK FOR ANAGRAMS \nExamples:")
 	A := [5]string{"abode", "man", "live", "heart", "ear"}
 	B := [5]string{"adobe", "nan", "evil", "earth", "car"}
-	fmt.Println("A = ['abode', 'man', 'live', 'heart', 'ear']\nB = ['adobe', 'nan', 'evil', 'earth', 'car']\n")
+	fmt.Println("A = ['abode', 'man', 'live', 'heart', 'ear']\nB = ['adobe', 'nan', 'evil', 'earth', 'car']")
 	//declare an empty list
 	anagram_check := check_anagram(A, B)
 	fmt.Println(anagram_check)
@@ -299,7 +300,7 @@ func test_algo() {
 	word_array := [5]string{"flower", "flow", "flight", "floor", "flood"}
 	fmt.Println("\nChecking the longest prefix in the list")
 	_prefix := find_prefix(word_array)
-	fmt.Println("Longest Prefix is %s", _prefix)
+	fmt.Printf("Longest Prefix is %s", _prefix)
 
 	//Printing FACTORIAL
 	fmt.Println("Type a number to print it's factorial: ")
@@ -342,7 +343,7 @@ func test_algo() {
 	//Examples are level, racecar, saippuakivikauppias
 	var word_strng string
 	fmt.Println("THIS PROGRAM CHECKS IF A WORD IS A PALINDROME")
-	fmt.Println("A Palindrome is a word that spells the same in both directions.\n")
+	fmt.Println("A Palindrome is a word that spells the same in both directions.")
 	fmt.Println("Type a word: ")
 	fmt.Scanf("%v", &word_strng)
 	determine_palindrome(word_strng)
@@ -352,7 +353,7 @@ func test_algo() {
 	fmt.Println()
 
 	my_array := [19]int{9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5, -6, -7, -8, -9}
-	fmt.Println("Sorting this list\n %s", my_array)
+	fmt.Printf("Sorting this list %v", my_array)
 	my_sorted_array := _bubble_sort(my_array)
 	fmt.Println(my_sorted_array)
 
@@ -426,6 +427,7 @@ func main() {
 	fmt.Scanf("%s", check)
 	for check == "Y" || check == "y" {
 		test_algo()
-		fmt.Println("Ha-ha! Super you. Wanna try again? Y/N\n%s", check)
+		fmt.Println("Ha-ha! Super you. Wanna try again? Y/N")
+		fmt.Scanf("%s", check)
 	}
 }
