@@ -45,12 +45,12 @@ func writeLines(lines []string, path string) error {
 }
 func even_odd(i int, j int) (return_array [][]int) {
 	if i > j {
-		var k = j
+		k := j
 		j = i
 		i = k
 	}
 
-	fmt.Printf("ITERATING BETWEEN %d and %d", i, j)
+	fmt.Printf("ITERATING BETWEEN %d and %d\n", i, j)
 	var odd_num_array []int  //An empty list
 	var even_num_array []int //integer value for even number counts initialized to zero
 
@@ -260,43 +260,31 @@ func test_algo() {
 	//EXECUTING EVEN_ODD func
 	fmt.Println("THIS PROGRAM OUTPUTS THE ODD NUMBERS AND THE COUNT OF EVEN BETWEEN TWO INTEGERS")
 	fmt.Println("Your first integer number: ")
-	x, err := fmt.Scanln(&j)
-	if err != nil {
-		log.Fatal(err)
-	}
+	fmt.Scanf("%v", &j)
+
 	fmt.Println("Your second integer number: ")
-	y, err := fmt.Scanln(&k)
-	if err != nil {
-		log.Fatal(err)
-	}
-	even_odd_array := even_odd(x, y)
+	fmt.Scanf("%v", &k)
+
+	even_odd_array := even_odd(j, k)
 	fmt.Printf("The odd numbers are: %v", even_odd_array[0])
 	fmt.Printf("The even numbers are: %v", even_odd_array[1])
 	fmt.Println()
 
 	//CALLING func TO PRINT TRIANGLE OF CHARACTERS
+	var i string
 	fmt.Println("LET'S HAVE A TRIANGLE OF CHARACTERS, SHALL WE?")
 	fmt.Println("Type a character please: ")
-	var i string
-	a, err := fmt.Scanln(&i)
-	if err != nil {
-		log.Fatal(err)
-	}
-	b, err := fmt.Scanln(&j)
-	if err != nil {
-		log.Fatal(err)
-	}
-	triangle := char_tri(strconv.Itoa(a), b)
+	fmt.Scanf("%v", &i)
+	fmt.Println("Type an integer: ")
+	fmt.Scanf("%v", &j)
+	triangle := char_tri(i, j)
 	fmt.Println(triangle + "\n")
 
 	//LET'S PRINT MULTIPLICATION TABLES
 	fmt.Println("\nLET'S GENERATE MULTIPLICATION TABLE")
 	fmt.Println("Your first integer number: ")
-	n, err := fmt.Scanln(&k)
-	if err != nil {
-		log.Fatal(err)
-	}
-	multi_table(n)
+	fmt.Scanf("%v", &j)
+	multi_table(j)
 
 	//PROGRAM ANAGRAM
 	//Anagrams are words that are made up of the same letters but have different meanings
@@ -313,16 +301,13 @@ func test_algo() {
 	word_array := [5]string{"flower", "flow", "flight", "floor", "flood"}
 	fmt.Println("\nChecking the longest prefix in the list")
 	_prefix := find_prefix(word_array)
-	fmt.Printf("Longest Prefix is %s", _prefix)
+	fmt.Printf("\nLongest Prefix is %s", _prefix)
 
 	//Printing FACTORIAL
-	fmt.Println("Type a number to print it's factorial: ")
-	u, err := fmt.Scanln(&j)
-	if err != nil {
-		log.Fatal(err)
-	}
+	fmt.Println("\nType a number to print it's factorial: ")
+	fmt.Scanf("%v", &j)
 	fmt.Println("PRINTING FACTORIAL")
-	fmt.Println(factorial(u))
+	fmt.Println(factorial(j))
 	fmt.Println()
 
 	//ITERATIVELY GENERATING FIBONACCI SERIES
@@ -343,22 +328,16 @@ func test_algo() {
 	fmt.Println("\nNOW LET'S DO IT THE RECURSION WAY")
 	var fib_series []int
 	fmt.Println("Type a number: ")
-	v, err := fmt.Scanln(&j)
-	if err != nil {
-		log.Fatal(err)
-	}
+	fmt.Scanf("%v", &j)
 	for i := 0; i < j; i++ {
-		fib_series = append(fib_series, fibonacci(v))
+		fib_series = append(fib_series, fibonacci(j))
 	}
 	//LET'S PRINT STUFF
 	fmt.Println("PRINTING FIBONACCI")
 	fmt.Println(fib_series)
 	fmt.Println("Type a number, let's get the Fibonacci value: ")
-	w, err := fmt.Scanln(&j)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(fibonacci(w))
+	fmt.Scanf("%v", &j)
+	fmt.Println(fibonacci(j))
 	fmt.Println()
 
 	//PROGRAM PALINDROME - A Palindrome is a word that spells the same in the same direcion
@@ -366,11 +345,9 @@ func test_algo() {
 	fmt.Println("THIS PROGRAM CHECKS IF A WORD IS A PALINDROME")
 	fmt.Println("A Palindrome is a word that spells the same in both directions.")
 	fmt.Println("Type a word: ")
-	word_strng, err := fmt.Scanln(&j)
-	if err != nil {
-		log.Fatal(err)
-	}
-	determine_palindrome(strconv.Itoa(word_strng))
+	var word_strng string
+	fmt.Scanf("%v", &word_strng)
+	determine_palindrome(word_strng)
 
 	//PROGRAM SORT LIST
 	fmt.Println("THIS func SORTS AN ARRAY IN ASCENDING ORDER")
@@ -384,11 +361,8 @@ func test_algo() {
 	//This program prints Pascal Triangle
 	fmt.Println("PRINTING PASCAL'S TRIANGLE")
 	fmt.Println("Type an integer number ")
-	m, err := fmt.Scanln(&j)
-	if err != nil {
-		log.Fatal(err)
-	}
-	for i := 0; i < m; i++ {
+	fmt.Scanf("%v", &j)
+	for i := 0; i < j; i++ {
 		fmt.Println(center(pascal_T(i), 80))
 	}
 	//Pascal Triangle - Every Array starts&&ends with 1
@@ -405,12 +379,9 @@ func test_algo() {
 	var pascal_group = map[string]*pascal_obj{"1": {1, []int{1}}}
 	var pascal_tri string
 	fmt.Println("Type a number ")
-	p, err := fmt.Scanln(&j)
-	if err != nil {
-		log.Fatal(err)
-	}
+	fmt.Scanf("%v", &j)
 
-	for i := 1; i <= int(p)+1; i++ {
+	for i := 1; i <= int(j)+1; i++ {
 		elem := new(pascal_obj)
 		col_array = append(col_array, unit_num)
 		_index := strconv.Itoa(i)
@@ -452,15 +423,13 @@ func test_algo() {
 }
 
 func main() {
+	var check string
 	fmt.Println("Let's Start, shall we? Type 'Y' to start and 'N' to quit.")
-	reader := bufio.NewReader(os.Stdin)
-	check, err := reader.ReadString('\n')
-	if err != nil {
-		log.Fatal(err)
-	}
+	fmt.Scanf("%v", &check)
+
 	for check == "Y" || check == "y" {
 		test_algo()
 		fmt.Println("Ha-ha! Super you. Wanna try again? Y/N")
-		fmt.Scanf("%s", check)
+		fmt.Scanf("%v", &check)
 	}
 }
