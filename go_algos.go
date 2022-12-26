@@ -137,7 +137,7 @@ func multi_table(n int) {
 
 	fmt.Println("\nPRINTING TABLES VERTICALLY")
 	for i := 1; i <= n; i++ {
-		for j := 1; j <= n; j++ {
+		for j := 1; j <= 12; j++ {
 			num = i * j
 			out_str += strconv.Itoa(i) + " * " + strconv.Itoa(j) + " = " + strconv.Itoa(num) + "\n"
 		}
@@ -150,7 +150,7 @@ func multi_table(n int) {
 	fmt.Println("PRINTING 9 BY 12 MULTIPLICATION TABLE SIDE BY SIDE")
 
 	for i := 1; i <= 13; i++ {
-		for j := 1; j <= 13; j++ {
+		for j := 1; j <= 6; j++ {
 			num = j * i
 			out_str += strconv.Itoa(j) + "*" + strconv.Itoa(i) + "=" + strconv.Itoa(num) + "\t\t"
 		}
@@ -161,19 +161,20 @@ func multi_table(n int) {
 
 func determine_palindrome(palindrome string) {
 	iter_count := math.Floor(float64(len(palindrome)) / 2) //Floor division
+	var true_array []bool
 	var truth_array []bool
 	neg := 1
 	for x := 0; x < int(iter_count); x++ {
 		//Comapre letters&&append the boolean outcomes to the list
 		if palindrome[x] == palindrome[len(palindrome)-neg] {
-			truth_array = append(truth_array, true)
+			true_array = append(true_array, true)
 		} else {
 			truth_array = append(truth_array, false)
 		}
 		neg += 1
 	}
 	fmt.Println(truth_array)
-	if len(truth_array) < len(palindrome) {
+	if float64(len(true_array)) < iter_count {
 		fmt.Printf("%s is not a palindrome", palindrome)
 	} else {
 		fmt.Printf("%s is a palindrome", palindrome)
@@ -266,13 +267,13 @@ func test_algo() {
 	fmt.Scanf("%v", &k)
 
 	even_odd_array := even_odd(j, k)
-	fmt.Printf("The odd numbers are: %v", even_odd_array[0])
+	fmt.Printf("The odd numbers are: %v\n", even_odd_array[0])
 	fmt.Printf("The even numbers are: %v", even_odd_array[1])
 	fmt.Println()
 
 	//CALLING func TO PRINT TRIANGLE OF CHARACTERS
 	var i string
-	fmt.Println("LET'S HAVE A TRIANGLE OF CHARACTERS, SHALL WE?")
+	fmt.Println("\nLET'S HAVE A TRIANGLE OF CHARACTERS, SHALL WE?")
 	fmt.Println("Type a character please: ")
 	fmt.Scanf("%v", &i)
 	fmt.Println("Type an integer: ")
@@ -311,12 +312,13 @@ func test_algo() {
 	fmt.Println()
 
 	//ITERATIVELY GENERATING FIBONACCI SERIES
-	fmt.Println("LET'S ITERATIVELY PRINT FIRST 10 NUMBERS OF THE FIBONACCI SERIES")
+	fmt.Println("LET'S ITERATIVELY PRINT THE FIRST 10 NUMBERS OF THE FIBONACCI SERIES")
 	var fib_array []int
 	new_item := 1
-	if len(fib_array) < 2 {
-		fib_array = append(fib_array, new_item)
-		for len(fib_array) < 10 {
+	for c := 0; c < 10; c++ {
+		if len(fib_array) < 2 {
+			fib_array = append(fib_array, new_item)
+		} else {
 			new_item = fib_array[len(fib_array)-1] + fib_array[len(fib_array)-2]
 			fib_array = append(fib_array, new_item)
 		}
@@ -330,7 +332,7 @@ func test_algo() {
 	fmt.Println("Type a number: ")
 	fmt.Scanf("%v", &j)
 	for i := 0; i < j; i++ {
-		fib_series = append(fib_series, fibonacci(j))
+		fib_series = append(fib_series, fibonacci(i))
 	}
 	//LET'S PRINT STUFF
 	fmt.Println("PRINTING FIBONACCI")
@@ -350,11 +352,11 @@ func test_algo() {
 	determine_palindrome(word_strng)
 
 	//PROGRAM SORT LIST
-	fmt.Println("THIS func SORTS AN ARRAY IN ASCENDING ORDER")
+	fmt.Println("\n\nTHIS FUNCTION SORTS AN ARRAY IN ASCENDING ORDER")
 	fmt.Println()
 
 	my_array := [19]int{9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5, -6, -7, -8, -9}
-	fmt.Printf("Sorting this list %v", my_array)
+	fmt.Printf("Sorting this list %v\n", my_array)
 	my_sorted_array := _bubble_sort(my_array)
 	fmt.Println(my_sorted_array)
 
