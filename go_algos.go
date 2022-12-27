@@ -168,6 +168,7 @@ func determine_palindrome(palindrome string) {
 		//Comapre letters&&append the boolean outcomes to the list
 		if palindrome[x] == palindrome[len(palindrome)-neg] {
 			true_array = append(true_array, true)
+			truth_array = append(truth_array, true)
 		} else {
 			truth_array = append(truth_array, false)
 		}
@@ -371,57 +372,41 @@ func test_algo() {
 	fmt.Println("NOW THAT WAS A funcAL APPROACH TO IT.\nLET'S GENERATE PASCTAL'S TRIANGLE ITERATIVELY")
 	unit_num := 1
 	var col_array []int
-	var new_array []int
+	var pascal_arr [][]int
 
-	type pascal_obj struct {
-		_key   int
-		_value []int
-	}
-
-	var pascal_group = map[string]*pascal_obj{"1": {1, []int{1}}}
-	var pascal_tri string
 	fmt.Println("Type a number ")
 	fmt.Scanf("%v", &j)
+	col_array = append(col_array, unit_num)
+	pascal_arr = append(pascal_arr, col_array)
 
-	for i := 1; i <= int(j)+1; i++ {
-		elem := new(pascal_obj)
-		col_array = append(col_array, unit_num)
-		_index := strconv.Itoa(i)
-		//Just using i to guage row lengths
-		if len(col_array) == i {
-			elem._key = i
-			elem._value = col_array
-			pascal_group[_index] = elem
-			col_array = nil
-		} else if len(col_array)/2 == 1 {
+	for i := 2; i <= j; i++ {
+		if len(col_array) < 2 {
 			col_array = append(col_array, unit_num)
-			elem._key = i
-			elem._value = col_array
-			pascal_group[_index] = elem
-		} else {
+			pascal_arr = append(pascal_arr, col_array)
+		} else if len(col_array) >= 2 {
 			col_array = nil
-			col_array = append(col_array, 1)
-			//new_array = pascal_obj[i-1]
-			for j := 0; j < len(new_array)-1; j++ {
-				col_array = append(col_array, new_array[j]+new_array[j+1])
+			col_array = append(col_array, unit_num)
+			last_arr := pascal_arr[len(pascal_arr)-1]
+			for k := 0; k < len(last_arr)-1; k++ {
+				col_array = append(col_array, last_arr[k]+last_arr[k+1])
 			}
-			col_array = append(col_array, 1)
-			elem._key = i
-			elem._value = col_array
-			col_array = nil
+			col_array = append(col_array, unit_num)
+			pascal_arr = append(pascal_arr, col_array)
 		}
 	}
 
-	fmt.Println(pascal_group)
 	fmt.Println()
+	fmt.Println(pascal_arr)
 	fmt.Println("PASCAL'S TRANGLE")
-	for k := 1; k <= j; k++ {
-		var col_str string
-		j := strconv.Itoa(k)
-		col_str = strings.Trim(strings.Replace(fmt.Sprint(pascal_group[j]._value), " ", ",", -1), "[]")
-		pascal_tri += col_str + "\n"
+	var col_str string
+	for k := 0; k < len(pascal_arr); k++ {
+		col_str = ""
+		for j := 0; j < len(pascal_arr[k]); j++ {
+			col_str += strconv.Itoa(pascal_arr[k][j]) + "    "
+		}
+		fmt.Println(center(col_str, 80))
 	}
-	fmt.Println(center(pascal_tri, 80))
+
 }
 
 func main() {

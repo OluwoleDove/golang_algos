@@ -20,3 +20,4 @@ INSTRUCTIONS
 - Run "Go: Install/Update Tools" in your VS Code command palette (CTRL+SHIFT+P), select all the options and click OK 
 - Open a terminal in your project directory and type go mod init {Your Choice Name}. This will create a go,mod file to track your code's dependencies
 - Type this in your terminal 'go run go_algos.go'
+- Remember to delete 'sorted.txt', your program should create your own file.
